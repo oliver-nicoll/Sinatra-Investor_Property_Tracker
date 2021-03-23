@@ -10,54 +10,54 @@ class UsersController < ApplicationController
 
     end
 
-    get '/investors' do
-        @investors = Investor.all 
-        erb :'investors/index'
+    get '/users' do
+        @users = user.all 
+        erb :'user/index'
     end
 
     
-    get '/investors/:id' do
-        @investor = Investor.find_by_id(params[:id])
-        erb :'investors/show'
+    get '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :'user/show'
     end
 
-    get '/investors/new' do
-        erb :new
+    get '/users/new' do
+        erb :'user/new'
     end
 
-    get '/investors/:id/edit' do
-        @investor = Investor.find_by_id(params[:id])
-        erb :'investor/edit'
+    get '/users/:id/edit' do
+        @user = User.find_by_id(params[:id])
+        erb :'user/edit'
     end
 
-    post '/investors' do
-        investor = Investor.new(params[:investor])
+    post '/users' do
+        user = User.new(params[:user])
         
-        if investor.save
-            redirect to "/investors/#{investor.id}"
+        if user.save
+            redirect to "/user/#{user.id}"
         else
             #flash message
-            redirect to "/investors/new"
+            redirect to "/user/new"
         end
     end
 
-    put '/investors/:id' do
-        investor = Investor.find_by_id(params[:id])
-        investor.name = params[:name]
-        investor.location = params[:location]
+    put '/users/:id' do
+        user = User.find_by_id(params[:id])
+        user.name = params[:first_name]
+        user.location = params[:location]
         
-        if investor.update(params[:investor])
-            redirect to "/investors/#{investor.id}"
+        if user.update(params[:user])
+            redirect to "/user/#{user.id}"
         else
             #flash warning
-            redirect to "/investors/#{investor.id}/edit"
+            redirect to "/user/#{user.id}/edit"
         end
     end
 
-    delete '/investors/:id' do
-        investor = Investor.find_by_id(params[:id])
-        investor.destroy
+    delete '/users/:id' do
+        user = User.find_by_id(params[:id])
+        user.destroy
         #flash message
-        redirect to '/investors'
+        redirect to '/user'
     end
 end

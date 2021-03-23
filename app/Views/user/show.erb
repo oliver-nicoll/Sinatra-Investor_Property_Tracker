@@ -1,0 +1,12 @@
+First Name: <%= @user.first_name %>
+Last Name: <%= @user.last_name %>
+Email: <%= @user.email %>
+
+Age: <%= @user.age %>
+Building's Owned: @user.buildings_owned %>
+
+<form action="/users/<%= @user.id %>" method="POST" >
+  <input type="hidden" name="_method" value="DELETE" />
+  
+  <input type="submit" value="Delete" />
+</form>

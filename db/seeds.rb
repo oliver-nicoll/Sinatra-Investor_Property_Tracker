@@ -9,7 +9,10 @@ Rental.create(
     second_floor: false,
     pets_allowed: true,
     availability: "May 2021",
-    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
+    created_at: 03/01/2021, 
+    updated_at: 03/23/2021,
+    user_id: User.find_or_create_by(email: "oliverrebuild@gmail.com").id
+
 )
 
 Rental.create(
@@ -21,7 +24,9 @@ Rental.create(
     second_floor: true,
     pets_allowed: false,
     availability: "auto-renewed",
-    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
+    created_at: 03/01/2021,
+    updated_at: 03/23/2021,
+    user_id: User.find_or_create_by(email: "oliverrebuild@gmail.com").id
 )
 
 Rental.create(
@@ -33,5 +38,7 @@ Rental.create(
     second_floor: false,
     pets_allowed: false,
     availability: "February 2022",
-    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
+    created_at: 03/01/2021, 
+    updated_at: 03/23/2021,
+    user_id: User.find_or_create_by(email: "oliverrebuild@gmail.com").id
 )
