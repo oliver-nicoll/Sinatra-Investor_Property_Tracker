@@ -1,11 +1,7 @@
-require_relative './config/environment'
-
-require './config/environment'
-
-if ActiveRecord::Migrator.needs_migration?
-    raise 'Migration are pending. Run 'rake db:migrate' to continure'
-end
+require "./config/environment"
 
 use Rack::MethodOverride
 
-Run ApplicationController
+use InvestorController
+use RentalController
+run ApplicationController
