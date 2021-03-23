@@ -1,4 +1,14 @@
-class InvestorController < ApplicationController
+class UsersController < ApplicationController
+    #handles the signup as well as editing or deleting a user account
+    #signup route form
+    get '/signup' do
+
+    end
+
+    #signup route post
+    post '/signup' do
+
+    end
 
     get '/investors' do
         @investors = Investor.all 

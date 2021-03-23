@@ -5,7 +5,8 @@ class ApplicationController < Sinatra::Base
     configure do
       set :public_folder, 'public'
       set :views, 'app/views'
-      # enable :sessions
+      enable :sessions
+      set :session_secret, ENV['SESSION_SECRET']
     end
   
       get '/' do
@@ -13,6 +14,7 @@ class ApplicationController < Sinatra::Base
       end
 
       get '/search' do 
+        @rental = Rental.find_by(address: params[:address])
         erb :search
       end
   end

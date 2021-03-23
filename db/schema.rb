@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_135809) do
-
-  create_table "investors", force: :cascade do |t|
-    t.string "name"
-    t.integer "buildings_owned"
-  end
+ActiveRecord::Schema.define(version: 2021_03_23_164253) do
 
   create_table "rentals", force: :cascade do |t|
     t.string "property_type"
@@ -27,16 +22,20 @@ ActiveRecord::Schema.define(version: 2021_03_23_135809) do
     t.boolean "second_floor"
     t.boolean "pets_allowed"
     t.string "availability"
-    t.integer "investor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.index ["investor_id"], name: "index_rentals_on_investor_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "buildings_owned"
   end
 
-  add_foreign_key "rentals", "investors"
+  add_foreign_key "rentals", "users"
 end

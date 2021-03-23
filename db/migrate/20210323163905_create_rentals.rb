@@ -10,6 +10,7 @@ class CreateRentals < ActiveRecord::Migration[6.1]
       t.boolean :second_floor
       t.boolean :pets_allowed
       t.string :availability
+      t.timestamps null: false
     end
   end
 end

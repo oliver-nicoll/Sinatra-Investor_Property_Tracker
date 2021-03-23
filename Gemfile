@@ -22,3 +22,5 @@ gem "sinatra", "~> 2.1"
 gem "shotgun", "~> 0.9.2"
 
 gem "bcrypt", "~> 3.1"
+
+gem "dotenv", "~> 2.7"
