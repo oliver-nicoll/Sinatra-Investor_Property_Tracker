@@ -44,6 +44,7 @@ class RentalController < ApplicationController
         rental.bathrooms = params[:second_floor]
         rental.bathrooms = params[:pets_allowed]
         rental.bathrooms = params[:availability]
+        rental.update(params[:rental])
         
         if rental.save
             redirect to "/rentals/#{rental.id}"
