@@ -1,0 +1,7 @@
+Name: <%= @investor.name %>
+Location: <%= @investor.location %>
+
+<form method="POST" action="/investors/<%=@investor.id%>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="delete" />
+</form>

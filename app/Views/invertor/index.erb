@@ -1,0 +1,8 @@
+<ul>
+<% @investor.each do |investor|%>
+  <li>
+    <a href="/investors/<%= investor.id %>">Name: <%= investor.name %></a>
+    Location: <%= investor.location %>
+  </li>
+<% end %>
+</ul>

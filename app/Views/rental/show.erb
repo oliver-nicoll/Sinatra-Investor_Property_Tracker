@@ -1,0 +1,9 @@
+Name: <%= @rental.name %>
+Address <%= @rental.address %>
+Bedrooms: <%= @rental.bedrooms %>
+Bathroom: <%= @rental.bathrooms %>
+
+<form method="POST" action="/rentals/<%=@rental.id%>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="delete" />
+</form>
