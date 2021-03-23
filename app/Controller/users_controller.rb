@@ -24,33 +24,40 @@ class UsersController < ApplicationController
     get '/users/new' do
         erb :'user/new'
     end
-
+#update 1 rental
     get '/users/:id/edit' do
         @user = User.find_by_id(params[:id])
         erb :'user/edit'
     end
 
+#create new user
+
     post '/users' do
         user = User.new(params[:user])
         
         if user.save
-            redirect to "/user/#{user.id}"
+            redirect to "/users/#{user.id}"
         else
+            "Error #{user.errors.full_messages.join(", ")}"
             #flash message
-            redirect to "/user/new"
+            sleep 5
+            redirect to "/users/new"
         end
     end
 
     put '/users/:id' do
         user = User.find_by_id(params[:id])
-        user.name = params[:first_name]
-        user.location = params[:location]
-        
+        user.first_name = params[:first_name]
+        user.last_name = params[:last_name]
+        user.email = params[:email]
+        user.age = params[:age]
+        user.buildings_owned = params[:buildings_owned]
+
         if user.update(params[:user])
-            redirect to "/user/#{user.id}"
+            redirect to "/users/#{user.id}"
         else
             #flash warning
-            redirect to "/user/#{user.id}/edit"
+            redirect to "/users/#{user.id}/edit"
         end
     end
 

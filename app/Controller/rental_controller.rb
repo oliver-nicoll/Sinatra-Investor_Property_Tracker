@@ -8,11 +8,11 @@ class RentalController < ApplicationController
     
     get '/rentals/:id' do
         @rental = Rental.find_by_id(params[:id])
-        erb :'rentals/show'
+        erb :'rental/show'
     end
 
     get '/rentals/new' do
-        erb :new
+        erb :'rental/new'
     end
 
       #update 1 rental
@@ -42,10 +42,10 @@ class RentalController < ApplicationController
         rental.bedrooms = params[:bedrooms]
         rental.bathrooms = params[:bathrooms]
         rental.lease_length = params[:lease_length]
-        rental.bathrooms = params[:monthly_rent]
-        rental.bathrooms = params[:second_floor]
-        rental.bathrooms = params[:pets_allowed]
-        rental.bathrooms = params[:availability]
+        rental.monthly_rent = params[:monthly_rent]
+        rental.second_floor = params[:second_floor]
+        rental.pets_allowed = params[:pets_allowed]
+        rental.availability = params[:availability]
         
         if rental.update(params[:rental])
             redirect to "/rentals/#{rental.id}"
