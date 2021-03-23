@@ -35,5 +35,5 @@ Rental.create(
     pets_allowed: false,
     availability: "February 2022",
     income_id: income_id,
-    investor_id: Investor.find_or_create_by(name: "Nicholas Oliver").id
+    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
 )
