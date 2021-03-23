@@ -21,7 +21,7 @@ class InvestorController < ApplicationController
     end
 
     post '/investors' do
-        investor = Investor.new(params["investor"])
+        investor = Investor.new(params[:investor])
         
         if investor.save
             redirect to "/investors/#{investor.id}"

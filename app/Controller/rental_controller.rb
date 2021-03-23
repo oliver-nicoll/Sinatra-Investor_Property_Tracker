@@ -23,7 +23,7 @@ class RentalController < ApplicationController
 
     #create new rental
     post '/rentals' do
-        rental = Rental.new(params["rental"])
+        rental = Rental.new(params[:rental])
 
         if movie.save
             redirect to "/rentals/#{rental.id}"
