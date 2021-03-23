@@ -10,7 +10,7 @@ Rental.create(
     pets_allowed: true,
     availability: "May 2021",
     income_id: income_id,
-    investor_id: Investor.find_or_create_by(name: "Nicholas Oliver").id
+    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
 )
 
 Rental.create(
@@ -23,7 +23,7 @@ Rental.create(
     pets_allowed: false,
     availability: "auto-renewed",
     income_id: income_id,
-    investor_id: Investor.find_or_create_by(name: "Nicholas Oliver").id
+    investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
 
 Rental.create(
     address: "130 West 2nd St. Berwick, Pa 18603",
