@@ -2,7 +2,7 @@ require "./config/environment"
 
 use Rack::MethodOverride
 
-use IncomeController
+# use UserController
 use InvestorController
 use RentalController
 run ApplicationController

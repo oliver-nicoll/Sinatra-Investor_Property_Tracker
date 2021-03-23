@@ -20,3 +20,5 @@ gem "require_all", "~> 3.0"
 gem "sinatra", "~> 2.1"
 
 gem "shotgun", "~> 0.9.2"
+
+gem "bcrypt", "~> 3.1"

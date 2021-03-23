@@ -1,4 +1,4 @@
-income_id = Income.create(yearly income: 19000).id
+
 #creating rental properties
 Rental.create(
     address: "130 West 2nd St Rear, Berwick, Pa 18603",
@@ -9,7 +9,6 @@ Rental.create(
     second_floor: false,
     pets_allowed: true,
     availability: "May 2021",
-    income_id: income_id,
     investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
 )
 
@@ -22,8 +21,8 @@ Rental.create(
     second_floor: true,
     pets_allowed: false,
     availability: "auto-renewed",
-    income_id: income_id,
     investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
+)
 
 Rental.create(
     address: "130 West 2nd St. Berwick, Pa 18603",
@@ -34,6 +33,5 @@ Rental.create(
     second_floor: false,
     pets_allowed: false,
     availability: "February 2022",
-    income_id: income_id,
     investor_id: Investor.find_or_create_by(name: "Nicholas Olivet").id
 )

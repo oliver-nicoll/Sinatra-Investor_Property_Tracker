@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_014409) do
-
-  create_table "incomes", force: :cascade do |t|
-    t.integer "yearly_income"
-  end
+ActiveRecord::Schema.define(version: 2021_03_23_135809) do
 
   create_table "investors", force: :cascade do |t|
     t.string "name"
@@ -32,11 +28,15 @@ ActiveRecord::Schema.define(version: 2021_03_23_014409) do
     t.boolean "pets_allowed"
     t.string "availability"
     t.integer "investor_id"
-    t.integer "income_id"
-    t.index ["income_id"], name: "index_rentals_on_income_id"
+    t.integer "user_id"
     t.index ["investor_id"], name: "index_rentals_on_investor_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
-  add_foreign_key "rentals", "incomes"
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+  end
+
   add_foreign_key "rentals", "investors"
 end
