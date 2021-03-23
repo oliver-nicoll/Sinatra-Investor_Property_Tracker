@@ -8,6 +8,7 @@ class RentalController < ApplicationController
     
     get '/rentals/:id' do
         @rental = Rental.find_by_id(params[:id])
+    
         erb :'rental/show'
     end
 

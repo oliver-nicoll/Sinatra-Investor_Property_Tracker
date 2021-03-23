@@ -1,17 +1,16 @@
+<h2> This is your rental page </h2><br>
 
-      Property Type: <%= rental.property_type %>
-      Address: <%= rental.address %>
-      Bedrooms: <%= rental.bedrooms %>
-      Bathrooms: <%= rental.bathrooms %>
-      Lease Length: <%= rental.lease_length %>
-      Monthly Rent: <%= rental.monthly_rent %>
-      Second Floor? <%= rental.second_floor %>
-      Pets Allowed? <%= rental.pets_allowed %>
-      Available: <%= rental.availability %>
+      Address: <%= @rental.address %><br>
+      Property Type: <%= @rental.property_type %><br>
+      Bedrooms: <%= @rental.bedrooms %><br>
+      Bathrooms: <%= @rental.bathrooms %><br>
+      Lease Length: <%= @rental.lease_length %><br>
+      Monthly Rent: <%= @rental.monthly_rent %><br>
+      Second Floor? <%= @rental.second_floor %><br>
+      Pets Allowed? <%= @rental.pets_allowed %><br>
+      Available: <%= @rental.availability %><br>
 
-<form action="/rentals/<%= @rental.id %>" method="POST" >
-  
-  <input type="hidden" name="_method" value="DELETE" />
-
-  <input type="submit" value="Delete Rental" />
-</form>
+<form action="/rentals/<%= @rental.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Movie">
+  </form>

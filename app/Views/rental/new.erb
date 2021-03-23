@@ -1,7 +1,10 @@
 <form action="/rentals" method="POST">
   
-  <label for="name">Name</label>
-  <input type="text" name="rental[name]"><br>
+  <label for="first_name">First Name:</label>
+  <input type="text" name="rental[first_name]"><br>
+
+  <label for="last_name">Last Name:</label>
+  <input type="text" name="rental[last_name]"><br>
 
   <label for="property_type">Property Type:</label>
   <input type="text" name="rental[property_type]" value="<%= @rental.property_type %>"><br>

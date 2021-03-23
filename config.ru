@@ -2,7 +2,7 @@ require "./config/environment"
 
 use Rack::MethodOverride
 
-use SessionsController
 use UsersController
+use SessionsController
 use RentalController
 run ApplicationController

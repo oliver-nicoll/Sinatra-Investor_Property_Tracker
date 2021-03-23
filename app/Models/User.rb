@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
 
     has_many :rentals
 
-    validates :name, presence: true
+    validates :email, presence: true
 end
