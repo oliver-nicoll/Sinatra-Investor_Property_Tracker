@@ -1,11 +1,11 @@
-<form method="POST" action="/investors/<%=@investor.id%>">
-  <input id="hidden" type="hidden" name="_method" value="patch" />
-
-  <label for="investor">Investor's Name</label>
-  <input type="text" id="investor" name="investor" value="<%=@investor.name%>" />
+<form action="/investors/<%= @investor.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  
+  <label for="investor">Investors Name</label>
+  <input type="text" id="investor" name="investor" value="<%= @investor.name %>" />
 
   <label for="location">Location:</label>
-  <input type="text" id="location" name="location" value="<%=@investor.location%>" />
+  <input type="text" id="location" name="location" value="<%= @investor.location %>" />
 
   <input type="submit" value="submit" />
 </form>

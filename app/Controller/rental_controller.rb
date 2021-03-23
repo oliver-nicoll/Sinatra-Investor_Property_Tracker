@@ -1,12 +1,8 @@
 class RentalController < ApplicationController
 
-    get '/rentals/new' do
-        erb :new
-    end
-
     get '/rentals' do
-        @rental = Rental.all 
-        erb :rentals/index
+        @rentals = Rental.all 
+        erb :'rental/index'
     end
 
     
@@ -15,30 +11,51 @@ class RentalController < ApplicationController
         erb :show
     end
 
+    get '/rentals/new' do
+        erb :new
+    end
+
+      #update 1 rental
     get '/rentals/:id/edit' do
         @rental = Rental.find_by_id(params[:id])
-        erb :edit
+        erb :'rental/edit'
     end
 
-    patch '/rentals/:id' do
-        @rental = Rental.find_by_id(params[:id])
-        @rental.owner = params[:owner]
-        @rental.address = params[:address]
-        @rental.bedrooms = params[:bedrooms]
-        @rental.bathrooms = params[:bathrooms]
-        @rental.save
-        redirect to "/rentals/#{@rental.id}"
-    end
-
+    #create new rental
     post '/rentals' do
-        @rental = Rental.create(params)
-        redirect to "/rentals/#{@rental.id}"
+        rental = Rental.new(params["rental"])
+
+        if movie.save
+            redirect to "/rentals/#{rental.id}"
+        else
+            #flash message
+            redirect to "/rentals/new"
+        end
+    end
+
+    put '/rentals/:id' do
+        rental = Rental.find_by_id(params[:id])
+        rental.property_type = params[:property_type]
+        rental.address = params[:address]
+        rental.bedrooms = params[:bedrooms]
+        rental.bathrooms = params[:bathrooms]
+        rental.lease_length = params[:lease_length]
+        rental.bathrooms = params[:monthly_rent]
+        rental.bathrooms = params[:second_floor]
+        rental.bathrooms = params[:pets_allowed]
+        rental.bathrooms = params[:availability]
+        
+        if rental.save
+            redirect to "/rentals/#{rental.id}"
+        else
+            redirect to "/rentals/#{rental.id}/edit"
+        end
     end
 
     delete '/rentals/:id' do
-        @rental = Rental.find_by_id(params[:id])
-        @rental.delete
-        redirect to '/rentals'
+        rental = Rental.find_by_id(params[:id])
+        rental.destroy
+        #flash message
+        redirect to "/rentals"
     end
-
 end

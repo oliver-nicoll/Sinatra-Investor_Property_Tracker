@@ -1,17 +1,32 @@
-<form method="POST" action="/rentals/<%=@rental.id%>">
-  <input id="hidden" type="hidden" name="_method" value="patch" />
-
-  <label for="Owner">Owner's Name</label>
-  <input type="text" id="owner" name="owner" value="<%=@rental.owner%>" />
+<form action="/rentals/<%= @rental.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  
+  <label for="property_type">Property Type:</label>
+  <input type="text" id="property_type" name="property_type" value="<%= @rental.property_type %>" />
 
   <label for="address">Address</label>
-  <input type="text" id="address" name="address" value="<%=@rental.address%>" />
+  <input type="text" id="address" name="address" value="<%= @rental.address %>" />
 
   <label for="bedrooms">Bedrooms</label>
-  <input type="text" id="bedrooms" name="bedrooms" value="<%=@rental.bedrooms%>" />
+  <input type="text" id="bedrooms" name="bedrooms" value="<%= @rental.bedrooms %>" />
 
   <label for="bathrooms">Bathrooms</label>
-  <input type="text" id="bathrooms" name="bathrooms" value="<%=@rental.bathrooms%>" />
+  <input type="text" id="bathrooms" name="bathrooms" value="<%= @rental.bathrooms %>" />
+
+  <label for="lease_length">Lease Length:</label>
+  <input type="text" id="lease_length" name="lease_length" value="<%= @rental.lease_length %>" />
+
+  <label for="monthly_rent">Monthly Rent:</label>
+  <input type="text" id="monthly_rent" name="monthly_rent" value="<%= @rental.monthly_rent %>" />
+
+  <label for="second_floor">Second Floor?</label>
+  <input type="text" id="second_floor" name="second_floor" value="<%= @rental.second_floor %>" />
+
+  <label for="pets_allowed">Pets Allowed?</label>
+  <input type="text" id="pets_allowed" name="pets_allowed" value="<%= @rental.pets_allowed %>" />
+
+  <label for="availability">Availability:</label>
+  <input type="text" id="availability" name="availability" value="<%= @rental.availability %>" />
 
   <input type="submit" value="submit" />
 </form>
