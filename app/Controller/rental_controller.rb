@@ -1,13 +1,13 @@
 class RentalController < ApplicationController
 
     get '/rentals' do
-        @rentals = Rental.all 
+        @rentals = current_user.rentals 
         erb :'rental/index'
     end
 
     
     get '/rentals/:id' do
-        @rental = Rental.find_by_id(params[:id])
+        @rental = current_u.find_by_id(params[:id])
     
         erb :'rental/show'
     end

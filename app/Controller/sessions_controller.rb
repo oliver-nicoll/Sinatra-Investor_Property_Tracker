@@ -14,10 +14,12 @@ class SessionsController < ApplicationController
             redirect "/rentals"
         else
             redirect "/login"
+        end
     end
 
     #logout delete (get/post)
     delete '/logout' do
         session.delete("user_id")
+        redirect "/login"
     end
 end

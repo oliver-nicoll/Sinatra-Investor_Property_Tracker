@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     #handles the signup as well as editing or deleting a user account
+    #if logged in don't show
+
     #signup route form
     get '/signup' do
         erb :'users/new'
@@ -7,6 +9,10 @@ class UsersController < ApplicationController
 
     #signup route post
     post '/signup' do
+        if User.find_by(email: params["user"]["email"])
+            redirect "/signup"
+        end
+
         user = User.new(params["user"])
 
         if user.save 
@@ -16,40 +22,10 @@ class UsersController < ApplicationController
             redirect "/signup"
         end
     end
-
-    get '/users' do
-        @users = user.all 
-        erb :'users/index'
-    end
-
-    
-    get '/users/:id' do
-        @user = User.find_by_id(params[:id])
-        erb :'users/show'
-    end
-
-    get '/users/new' do
-        erb :'users/new'
-    end
-#update 1 rental
-    get '/users/:id/edit' do
-        @user = User.find_by_id(params[:id])
+#update 1 user
+    get '/profile/edit' do
+        @user = current_user #don't need this
         erb :'users/edit'
-    end
-
-#create new user
-
-    post '/users' do
-        user = User.new(params[:user])
-        
-        if user.save
-            redirect to "/users/#{user.id}"
-        else
-            "Error #{user.errors.full_messages.join(", ")}"
-            #flash message
-            sleep 5
-            redirect to "/users/new"
-        end
     end
 
     put '/users/:id' do

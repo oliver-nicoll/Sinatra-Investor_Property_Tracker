@@ -1,14 +1,14 @@
-<form action="/user/<%= @user.id %>" method="POST">
+<form action="/profile/edit" method="POST">
   <input type="hidden" name="_method" value="PUT">
   
   <label for="first_name">First Name:</label>
-  <input type="text" name="user[first_name]" value="<%= @user.first_name %>"><br>
+  <input type="text" name="user[first_name]" value="<%= current_user.first_name %>"><br>
 
   <label for="last_name">Last Name:</label>
-  <input type="text" name="user[last_name]" value="<%= @user.last_name %>"><br>
+  <input type="text" name="user[last_name]" value="<%= current_user.last_name %>"><br>
 
   <label for="age">Age:</label>
-  <input type="text" name="user[age]" value="<%= @user.age %>"><br>
+  <input type="text" name="user[age]" value="<%= current_user.age %>"><br>
 
   <input type="submit" value="submit">
 </form>
