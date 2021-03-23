@@ -8,7 +8,7 @@ class RentalController < ApplicationController
     
     get '/rentals/:id' do
         @rental = Rental.find_by_id(params[:id])
-        erb :show
+        erb :'rentals/show'
     end
 
     get '/rentals/new' do
@@ -28,7 +28,9 @@ class RentalController < ApplicationController
         if movie.save
             redirect to "/rentals/#{rental.id}"
         else
-            #flash message
+            "Error #{rental.errors.full_messages.join(", ")}"
+            #flash message?
+            sleep 5
             redirect to "/rentals/new"
         end
     end
@@ -44,9 +46,8 @@ class RentalController < ApplicationController
         rental.bathrooms = params[:second_floor]
         rental.bathrooms = params[:pets_allowed]
         rental.bathrooms = params[:availability]
-        rental.update(params[:rental])
         
-        if rental.save
+        if rental.update(params[:rental])
             redirect to "/rentals/#{rental.id}"
         else
             redirect to "/rentals/#{rental.id}/edit"

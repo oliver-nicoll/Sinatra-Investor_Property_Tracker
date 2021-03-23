@@ -8,7 +8,7 @@ class InvestorController < ApplicationController
     
     get '/investors/:id' do
         @investor = Investor.find_by_id(params[:id])
-        erb :show
+        erb :'investors/show'
     end
 
     get '/investors/new' do
@@ -35,8 +35,8 @@ class InvestorController < ApplicationController
         investor = Investor.find_by_id(params[:id])
         investor.name = params[:name]
         investor.location = params[:location]
-    
-        if investor.save
+        
+        if investor.update(params[:investor])
             redirect to "/investors/#{investor.id}"
         else
             #flash warning
