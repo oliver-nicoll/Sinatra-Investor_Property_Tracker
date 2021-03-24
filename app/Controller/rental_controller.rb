@@ -51,7 +51,7 @@ class RentalController < ApplicationController
         erb :'rental/edit'
     end
 #update 1 movie (save in db)
-    put '/rentals/:id/edit' do
+    put '/rentals/:id' do
         redirect_if_not_logged_in
         redirect_if_not_authorized
         
