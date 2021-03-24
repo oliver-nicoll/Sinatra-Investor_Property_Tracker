@@ -1,30 +1,38 @@
 class RentalController < ApplicationController
 
     get '/rentals' do
+        redirect_if_not_logged_in
+
         @rentals = current_user.rentals 
         erb :'rental/index'
     end
 
-    
+    get '/rentals/new' do
+        redirect_if_not_logged_in
+
+        erb :'rental/new'
+    end
+
     get '/rentals/:id' do
-        @rental = current_u.find_by_id(params[:id])
+        redirect_if_not_logged_in
+        redirect_if_not_authorized
     
         erb :'rental/show'
     end
 
-    get '/rentals/new' do
-        erb :'rental/new'
-    end
-
-      #update 1 rental
+      #update 1 rental (render form)
     get '/rentals/:id/edit' do
-        @rental = Rental.find_by_id(params[:id])
+        redirect_if_not_logged_in
+        redirect_if_not_authorized
+
         erb :'rental/edit'
     end
 
     #create new rental
     post '/rentals' do
-        rental = Rental.new(params[:rental])
+        redirect_if_not_logged_in
+
+        rental = current_user.rentals.build(params["rental"])
 
         if movie.save
             redirect to "/rentals/#{rental.id}"
@@ -35,30 +43,34 @@ class RentalController < ApplicationController
             redirect to "/rentals/new"
         end
     end
-
+#update 1 movie (save in db)
     put '/rentals/:id' do
-        rental = Rental.find_by_id(params[:id])
-        rental.property_type = params[:property_type]
-        rental.address = params[:address]
-        rental.bedrooms = params[:bedrooms]
-        rental.bathrooms = params[:bathrooms]
-        rental.lease_length = params[:lease_length]
-        rental.monthly_rent = params[:monthly_rent]
-        rental.second_floor = params[:second_floor]
-        rental.pets_allowed = params[:pets_allowed]
-        rental.availability = params[:availability]
+        redirect_if_not_logged_in
+
+        redirect_if_not_authorized
         
-        if rental.update(params[:rental])
-            redirect to "/rentals/#{rental.id}"
+        if @rental.update(params[:rental])
+            redirect to "/rentals/#{@rental.id}"
         else
-            redirect to "/rentals/#{rental.id}/edit"
+            redirect to "/rentals/#{@rental.id}/edit"
         end
     end
 
     delete '/rentals/:id' do
-        rental = Rental.find_by_id(params[:id])
-        rental.destroy
-        #flash message
+        redirect_if_not_logged_in
+        redirect_if_not_authorized
+
+        @rental.destroy
+
         redirect to "/rentals"
     end
+
+    private
+
+    def redirect_if_not_authorized
+        @rental = Rental.find_by_id(params[:id])
+        if @rental.user_id != session[:user_id]
+            redirect "/rentals"
+    end
+
 end

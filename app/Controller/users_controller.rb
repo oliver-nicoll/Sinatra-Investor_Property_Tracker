@@ -4,14 +4,18 @@ class UsersController < ApplicationController
 
     #signup route form
     get '/signup' do
+        redirect_if_logged_in
+
         erb :'users/new'
     end
 
     #signup route post
     post '/signup' do
-        if User.find_by(email: params["user"]["email"])
-            redirect "/signup"
-        end
+        redirect_if_logged_in
+
+        # if User.find_by(email: params["user"]["email"])
+        #     redirect "/signup"
+        # end
 
         user = User.new(params["user"])
 

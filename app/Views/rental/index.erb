@@ -1,16 +1,16 @@
 <ul>
 <% @rentals.each do |rental|%>
   <li>
-    <a href="/rentals/<%= rental.id %>">Address: <%= rental.address %></a>
-    Property Type: <%= rental.property_type %>
-    Address: <%= rental.address %>
-    Bedrooms: <%= rental.bedrooms %>
-    Bathrooms: <%= rental.bathrooms %>
-    Lease Length: <%= rental.lease_length %>
-    Monthly Rent: <%= rental.monthly_rent %>
-    Second Floor? <%= rental.second_floor %>
-    Pets Allowed? <%= rental.pets_allowed %>
-    Available: <%= rental.availability %>
+    <a href="/rentals/<%= rental.id %>">Address: <%= rental.address %></a><br>
+    Property Type: <%= rental.property_type %><br>
+    Address: <%= rental.address %><br>
+    Bedrooms: <%= rental.bedrooms %><br>
+    Bathrooms: <%= rental.bathrooms %><br>
+    Lease Length: <%= rental.lease_length %><br>
+    Monthly Rent: <%= rental.monthly_rent %><br>
+    Second Floor? <%= rental.second_floor %><br>
+    Pets Allowed? <%= rental.pets_allowed %><br>
+    Available: <%= rental.availability %><br>
   </li>
 <% end %>
 </ul>
