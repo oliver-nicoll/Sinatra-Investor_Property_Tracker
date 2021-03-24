@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     #login route post
     post '/login' do
        redirect_if_logged_in
+binding.pry
 
         user = User.find_by(email: params["user"]["email"])
 
