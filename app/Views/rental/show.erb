@@ -12,5 +12,9 @@
 
 <form action="/rentals/<%= @rental.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Movie">
-  </form>
+      <input type="submit" value="Delete Rental">
+</form>
+<form action="/rentals/<%= @rental.id %>/edit" method="post">
+      <input type="hidden" name="_method" value="PUT">      
+      <input type="submit" value="Edit Rental">
+</form>

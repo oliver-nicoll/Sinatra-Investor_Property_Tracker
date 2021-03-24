@@ -32,24 +32,30 @@ class RentalController < ApplicationController
     post '/rentals' do
         redirect_if_not_logged_in
 
-        rental = current_user.rentals.build(params["rental"])
+        rental = current_user.rentals.build(params[:rental])
 
-        if movie.save
+        if rental.save
             redirect to "/rentals/#{rental.id}"
         else
             "Error #{rental.errors.full_messages.join(", ")}"
-            #flash message?
             sleep 5
             redirect to "/rentals/new"
         end
     end
-#update 1 movie (save in db)
-    put '/rentals/:id' do
-        redirect_if_not_logged_in
 
+     #update 1 rental (render form)
+     get '/rentals/:id/edit' do
+        redirect_if_not_logged_in
+        redirect_if_not_authorized
+
+        erb :'rental/edit'
+    end
+#update 1 movie (save in db)
+    put '/rentals/:id/edit' do
+        redirect_if_not_logged_in
         redirect_if_not_authorized
         
-        if @rental.update(params[:rental])
+        if @rental.update(params["rental"])
             redirect to "/rentals/#{@rental.id}"
         else
             redirect to "/rentals/#{@rental.id}/edit"
@@ -71,6 +77,7 @@ class RentalController < ApplicationController
         @rental = Rental.find_by_id(params[:id])
         if @rental.user_id != session[:user_id]
             redirect "/rentals"
+        end
     end
 
 end

@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
     end
   
       get '/' do
-        redirect_if_not_logged_in
+        erb :home
       end
 
       helpers do 
