@@ -37,8 +37,7 @@ class RentalController < ApplicationController
         if rental.save
             redirect to "/rentals/#{rental.id}"
         else
-            "Error #{rental.errors.full_messages.join(", ")}"
-            sleep 5
+            flash[:error] = "#{rental.errors.full_messages.join(", ")}"
             redirect to "/rentals/new"
         end
     end
@@ -58,6 +57,7 @@ class RentalController < ApplicationController
         if @rental.update(params["rental"])
             redirect to "/rentals/#{@rental.id}"
         else
+            flash[:error] = "#{rental.errors.full_messages.join(", ")}"
             redirect to "/rentals/#{@rental.id}/edit"
         end
     end
@@ -75,6 +75,7 @@ class RentalController < ApplicationController
 
     def redirect_if_not_authorized
         @rental = Rental.find_by_id(params[:id])
+
         if @rental.user_id != session[:user_id]
             redirect "/rentals"
         end

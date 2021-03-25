@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
-    #handles the signup as well as editing or deleting a user account
-    #if logged in don't show
-
-    #signup route form
+    
     get '/signup' do
         redirect_if_logged_in
 
         erb :'users/new'
     end
 
-    #signup route post
+    
     post '/signup' do
         redirect_if_logged_in
 
@@ -20,19 +17,22 @@ class UsersController < ApplicationController
             session["user_id"] = user.id
             redirect to "/rentals"
         else
+            flash[:notice] = "#{users.errors.full_messages.join(", ")}"
             redirect "/signup"
         end
     end
 
     get '/users/:id' do
         redirect_if_not_logged_in
-        redirect_if_not_authorized_user
-    
+        binding.pry
+        redirect_if_not_authorized
+        
         erb :'users/show'
     end
     
 #update 1 user
     get '/users/edit' do
+        redirect_if_not_logged_in
         @user = current_user #don't need this
         erb :'users/edit'
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         if @user.update(params[:user])
             redirect to "/users/#{@user.id}"
         else
-            #flash warning
+            flash[:notice] = "#{users.errors.full_messages.join(", ")}"
             redirect to "/users/#{@user.id}/edit"
         end
     end
@@ -65,10 +65,10 @@ class UsersController < ApplicationController
 
     private
 
-    def redirect_if_not_authorized_user
-        @user = Users.find_by_id(params[:id])
-        if @user.user_id != session[:user_id]
-            redirect "/users"
+    def redirect_if_not_authorized
+        @rental = Rental.find_by_id(params[:id])
+        if @rental.user_id != session[:user_id]
+            redirect "/rentals"
         end
     end
 end
