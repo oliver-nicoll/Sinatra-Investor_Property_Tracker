@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/profile/:id' do
+    get '/users/:id' do
         redirect_if_not_logged_in
         redirect_if_not_authorized_user
     
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
     
 #update 1 user
-    get '/profile/edit' do
+    get '/users/edit' do
         @user = current_user #don't need this
         erb :'users/edit'
     end
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     private
 
     def redirect_if_not_authorized_user
-        @user = User.find_by_id(params[:id])
+        @user = Users.find_by_id(params[:id])
         if @user.user_id != session[:user_id]
             redirect "/users"
         end

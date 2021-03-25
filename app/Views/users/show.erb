@@ -16,8 +16,8 @@
         Building's Owned: @user.buildings_owned %>
 
         <button type="button" class="btn btn-outline-dark">
-        <a href="/profile/<%= @user.id %>/edit" style='text-decoration:none; color: #bf764c;'>Edit User
-         </button>
+            <a href="/profile/<%= @user.id %>/edit" style='text-decoration:none; color: #bf764c;'>Edit User
+        </button>
         <form action="/users/<%= @user.id %>" method="POST" >
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="Delete" >
