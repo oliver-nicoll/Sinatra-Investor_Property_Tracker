@@ -1,16 +1,21 @@
-<ul>
-<% @rentals.each do |rental|%>
-  <li>
-    <a href="/rentals/<%= rental.id %>">Address: <%= rental.address %></a><br>
-    Property Type: <%= rental.property_type %><br>
-    Address: <%= rental.address %><br>
-    Bedrooms: <%= rental.bedrooms %><br>
-    Bathrooms: <%= rental.bathrooms %><br>
-    Lease Length: <%= rental.lease_length %><br>
-    Monthly Rent: <%= rental.monthly_rent %><br>
-    Second Floor? <%= rental.second_floor %><br>
-    Pets Allowed? <%= rental.pets_allowed %><br>
-    Available: <%= rental.availability %><br>
-  </li>
-<% end %>
-</ul>
+<div style="text-align: right; margin-top: 0px;
+margin-bottom: 100px;
+margin-right: 150px;
+margin-left: 80px;">  
+   <ul>
+    <% @rentals.each do |rental|%>
+      <li style="list-style-type: none;">
+      <br>
+        <a href="/rentals/<%= rental.id %>" style='text-decoration:none; color: #bf764c'>Address: <%= rental.address %></a><br>
+        Property Type: <%= rental.property_type %><br>
+        Bedrooms: <%= rental.bedrooms %><br>
+        Bathrooms: <%= rental.bathrooms %><br>
+        Lease Length: <%= rental.lease_length %><br>
+        Monthly Rent: <%= rental.monthly_rent %><br>
+        Second Floor? <%= rental.second_floor %><br>
+        Pets Allowed? <%= rental.pets_allowed %><br>
+        Available: <%= rental.availability %><br>
+      </li>
+    <% end %>
+    </ul>
+</div>

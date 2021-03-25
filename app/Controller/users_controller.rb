@@ -13,9 +13,6 @@ class UsersController < ApplicationController
     post '/signup' do
         redirect_if_logged_in
 
-        # if User.find_by(email: params["user"]["email"])
-        #     redirect "/signup"
-        # end
 
         user = User.new(params["user"])
 
@@ -26,6 +23,14 @@ class UsersController < ApplicationController
             redirect "/signup"
         end
     end
+
+    get '/profile/:id' do
+        redirect_if_not_logged_in
+        redirect_if_not_authorized_user
+    
+        erb :'users/show'
+    end
+    
 #update 1 user
     get '/profile/edit' do
         @user = current_user #don't need this
@@ -33,25 +38,37 @@ class UsersController < ApplicationController
     end
 
     put '/users/:id' do
-        user = User.find_by_id(params[:id])
-        user.first_name = params[:first_name]
-        user.last_name = params[:last_name]
-        user.email = params[:email]
-        user.age = params[:age]
-        user.buildings_owned = params[:buildings_owned]
+        redirect_if_not_logged_in
+        redirect_if_not_authorized_user
+        # user = User.find_by_id(params[:id])
+        # user.first_name = params[:first_name]
+        # user.last_name = params[:last_name]
+        # user.email = params[:email]
+        # user.age = params[:age]
+        # user.buildings_owned = params[:buildings_owned]
 
-        if user.update(params[:user])
-            redirect to "/users/#{user.id}"
+        if @user.update(params[:user])
+            redirect to "/users/#{@user.id}"
         else
             #flash warning
-            redirect to "/users/#{user.id}/edit"
+            redirect to "/users/#{@user.id}/edit"
         end
     end
 
     delete '/users/:id' do
-        user = User.find_by_id(params[:id])
-        user.destroy
-        #flash message
+       redirect_if_not_logged_in
+       redirect_if_not_authorized_user
+        @user.destroy
+       
         redirect to '/users'
+    end
+
+    private
+
+    def redirect_if_not_authorized_user
+        @user = User.find_by_id(params[:id])
+        if @user.user_id != session[:user_id]
+            redirect "/users"
+        end
     end
 end

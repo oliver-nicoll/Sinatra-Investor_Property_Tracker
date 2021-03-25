@@ -1,12 +1,26 @@
-First Name: <%= @user.first_name %>
-Last Name: <%= @user.last_name %>
-Email: <%= @user.email %>
+<div style="text-align: right; margin-top: 0px;
+      margin-bottom: 100px;
+      margin-right: 150px;
+      margin-left: 80px;">  
 
-Age: <%= @user.age %>
-Building's Owned: @user.buildings_owned %>
 
-<form action="/users/<%= @user.id %>" method="POST" >
-  <input type="hidden" name="_method" value="DELETE" />
-  
-  <input type="submit" value="Delete" />
-</form>
+      <br><br><br>
+      <h3 style=" color: #90926f; margin-right: 400px;" >Profile:</h3><br>
+
+      <p>    
+        First Name: <%= @user.first_name %>
+        Last Name: <%= @user.last_name %>
+        Email: <%= @user.email %>
+
+        Age: <%= @user.age %>
+        Building's Owned: @user.buildings_owned %>
+
+        <button type="button" class="btn btn-outline-dark">
+        <a href="/profile/<%= @user.id %>/edit" style='text-decoration:none; color: #bf764c;'>Edit User
+         </button>
+        <form action="/users/<%= @user.id %>" method="POST" >
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="Delete" >
+        </form>
+        </p>
+</div>

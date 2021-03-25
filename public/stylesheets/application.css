@@ -1,5 +1,5 @@
-div.bg-main{
-    background-image: url("../images/background_c.png")
+.bg-main{
+    background-image: url("../images/background_e.png")
     height: 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;

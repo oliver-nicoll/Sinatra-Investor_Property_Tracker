@@ -1,31 +1,40 @@
-<form action="/rentals" method="POST">
+<div style="text-align: right; margin-top: 0px;
+      margin-bottom: 100px;
+      margin-right: 150px;
+      margin-left: 80px;">
+    <form action="/rentals" method="POST">
+      <br>
+      <br>
+      <h3 style=" color: #4a5e6c; margin-right: 100px;" >New Rental</h3>
+      <br>
+      <br>
+      <label for="property_type">Property Type:</label>
+      <input type="text" name="rental[property_type]"><br><br>
 
-  <label for="property_type">Property Type:</label>
-  <input type="text" name="rental[property_type]"><br>
+      <label for="address">Address</label>
+      <input type="text" name="rental[address]"><br><br>
 
-  <label for="address">Address</label>
-  <input type="text" name="rental[address]"><br>
+      <label for="bedrooms">Bedrooms</label>
+      <input type="text" name="rental[bedrooms]"><br><br>
 
-  <label for="bedrooms">Bedrooms</label>
-  <input type="text" name="rental[bedrooms]"><br>
+      <label for="bathrooms">Bathrooms</label>
+      <input type="text" name="rental[bathrooms]"><br><br>
 
-  <label for="bathrooms">Bathrooms</label>
-  <input type="text" name="rental[bathrooms]"><br>
+      <label for="lease_length">Lease Duration:</label>
+      <input type="text" name="rental[lease_length]"><br><br>
 
-  <label for="lease_length">Lease Duration:</label>
-  <input type="text" name="rental[lease_length]"><br>
+      <label for="monthly_rent">Monthly Rent:</label>
+      <input type="text" name="rental[monthly_rent]"><br><br>
 
-  <label for="monthly_rent">Monthly Rent:</label>
-  <input type="text" name="rental[monthly_rent]"><br>
+      <label for="second_floor">Second Floor?</label>
+      <input type="text" name="rental[second_floor]"><br><br>
 
-  <label for="second_floor">Second Floor?</label>
-  <input type="text" name="rental[second_floor]"><br>
+      <label for="pets_allowed">Pet Allowed?</label>
+      <input type="text" name="rental[pets_allowed]"><br><br>
 
-  <label for="pets_allowed">Pet Allowed?</label>
-  <input type="text" name="rental[pets_allowed]"><br>
+      <label for="availability">Availability:</label>
+      <input type="text" name="rental[availability]"><br><br>
 
-  <label for="availability">Availability:</label>
-  <input type="text" name="rental[availability]"><br>
-
-  <input type="submit" value="Create New Rental">
-</form>
+      <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="Create New Rental">
+    </form>
+</div>

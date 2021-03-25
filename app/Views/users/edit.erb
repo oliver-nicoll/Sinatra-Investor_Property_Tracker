@@ -1,14 +1,19 @@
-<form action="/profile/edit" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  
-  <label for="first_name">First Name:</label>
-  <input type="text" name="user[first_name]" value="<%= current_user.first_name %>"><br>
+<div style="text-align: right; margin-top: 0px;
+      margin-bottom: 100px;
+      margin-right: 150px;
+      margin-left: 80px;">    
+    <form action="/profile/edit" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+      
+      <label for="first_name">First Name:</label>
+      <input type="text" name="user[first_name]" value="<%= current_user.first_name %>"><br>
 
-  <label for="last_name">Last Name:</label>
-  <input type="text" name="user[last_name]" value="<%= current_user.last_name %>"><br>
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="user[last_name]" value="<%= current_user.last_name %>"><br>
 
-  <label for="age">Age:</label>
-  <input type="text" name="user[age]" value="<%= current_user.age %>"><br>
+      <label for="age">Age:</label>
+      <input type="text" name="user[age]" value="<%= current_user.age %>"><br>
 
-  <input type="submit" value="submit">
-</form>
+      <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="submit">
+    </form>
+</div>
