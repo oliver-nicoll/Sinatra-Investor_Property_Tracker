@@ -1,24 +1,24 @@
 <div style="text-align: right; margin-top: 0px;
       margin-bottom: 100px;
       margin-right: 150px;
-      margin-left: 80px;">  
+      margin-left: 400px;">  
 
 
       <br><br><br>
       <h3 style=" color: #90926f; margin-right: 400px;" >Profile:</h3><br>
 
       <p>    
-        First Name: <%= @user.first_name %>
-        Last Name: <%= @user.last_name %>
-        Email: <%= @user.email %>
+        First Name: <%= current_user.first_name %><br><br>
+        Last Name: <%= current_user.last_name %><br><br>
+        Email: <%= current_user.email %><br><br>
 
-        Age: <%= @user.age %>
-        Building's Owned: @user.buildings_owned %>
+        Age: <%= current_user.age %><br><br>
+        Building's Owned: <%= current_user.buildings_owned %><br><br>
 
         <button type="button" class="btn btn-outline-dark">
-            <a href="/profile/<%= @user.id %>/edit" style='text-decoration:none; color: #bf764c;'>Edit User
+            <a href="/users/<%= current_user.id %>/edit" style='text-decoration:none; color: #bf764c;'>Edit User
         </button>
-        <form action="/users/<%= @user.id %>" method="POST" >
+        <form action="/users/<%= current_user.id %>" method="POST" >
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="Delete" >
         </form>

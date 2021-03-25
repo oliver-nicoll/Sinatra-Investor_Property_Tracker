@@ -2,17 +2,24 @@
       margin-bottom: 100px;
       margin-right: 150px;
       margin-left: 80px;">    
-    <form action="/profile/edit" method="POST">
+    <form action="/users/<%= current_user.id %>" method="POST">
       <input type="hidden" name="_method" value="PUT">
+
+      <br><br>
+      <h3 style=" color: #4a5e6c; margin-right: 275px;"> Edit Profile:</h3><br><br>
       
       <label for="first_name">First Name:</label>
-      <input type="text" name="user[first_name]" value="<%= current_user.first_name %>"><br>
+      <input type="text" name="user[first_name]" value="<%= current_user.first_name %>"><br><br>
 
       <label for="last_name">Last Name:</label>
-      <input type="text" name="user[last_name]" value="<%= current_user.last_name %>"><br>
+      <input type="text" name="user[last_name]" value="<%= current_user.last_name %>"><br><br>
 
       <label for="age">Age:</label>
-      <input type="text" name="user[age]" value="<%= current_user.age %>"><br>
+      <input type="text" name="user[age]" value="<%= current_user.age %>"><br><br>
+
+      <label for="buildings_owned">Building's Owned:</label>
+      <input type="text" name="user[buildings_owned]" value="<%= current_user.buildings_owned %>"><br><br>
+      
 
       <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="submit">
     </form>
