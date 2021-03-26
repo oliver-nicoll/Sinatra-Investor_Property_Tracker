@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
             session["user_id"] = user.id
             redirect "/rentals"
         else
+            flash[:errortwo] = "Try again"
             redirect "/login"
         end
     end

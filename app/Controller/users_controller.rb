@@ -17,53 +17,42 @@ class UsersController < ApplicationController
             session["user_id"] = user.id
             redirect to "/rentals"
         else
-            flash[:notice] = "#{users.errors.full_messages.join(", ")}"
+            flash[:notice] = "#{user.errors.full_messages.join(", ")}"
             redirect "/signup"
         end
     end
 
-    get '/users/:id' do
+    get '/profile' do
         redirect_if_not_logged_in
-        
-        redirect_if_not_authorized
+        # binding.pry
         
         erb :'users/show'
     end
     
 #update 1 user - renders form
-    get '/users/:id/edit' do
+    get '/profile/edit' do
         redirect_if_not_logged_in
-        redirect_if_not_authorized
         @user = current_user #don't need this
         erb :'users/edit'
     end
 #save in db
-    put '/users/:id' do
+    put '/profile' do
         redirect_if_not_logged_in
-        redirect_if_not_authorized
 
         if current_user.update(params[:user])
-            redirect to "/users/#{current_user.id}"
+            redirect to "/profile"
         else
             flash[:notice] = "#{current_user.errors.full_messages.join(", ")}"
-            redirect to "/users/#{current_user.id}/edit"
+            redirect to "/profile/edit"
         end
     end
 
-    delete '/users/:id' do
+    delete '/profile' do
        redirect_if_not_logged_in
-       redirect_if_not_authorized_user
-        @user.destroy
+    
+        current_user.destroy
        
-        redirect to '/users'
+        redirect to '/'
     end
 
-    private
-
-    def redirect_if_not_authorized
-        @rental = Rental.find_by_id(params[:id])
-        if @rental.user_id != session[:user_id]
-            redirect "/rentals"
-        end
-    end
 end

@@ -2,7 +2,7 @@
       margin-bottom: 100px;
       margin-right: 150px;
       margin-left: 80px;">    
-    <form action="/users/<%= current_user.id %>" method="POST">
+    <form action="/profile" method="POST">
       <input type="hidden" name="_method" value="PUT">
 
       <br><br>
@@ -21,6 +21,6 @@
       <input type="text" name="user[buildings_owned]" value="<%= current_user.buildings_owned %>"><br><br>
       
 
-      <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="submit">
+      <input type="submit" class="btn btn-outline-dark" style='text-decoration:none; color: #bf764c;' value="Update Rental">
     </form>
 </div>
