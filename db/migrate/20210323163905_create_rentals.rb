@@ -8,7 +8,7 @@ class CreateRentals < ActiveRecord::Migration[6.1]
       t.string :lease_length
       t.integer :monthly_rent
       t.boolean :second_floor
-      t.boolean :pets_allowed
+      t.string :pets_allowed
       t.string :availability
       t.timestamps null: false
     end

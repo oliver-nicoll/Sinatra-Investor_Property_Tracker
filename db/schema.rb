@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_164253) do
     t.string "lease_length"
     t.integer "monthly_rent"
     t.boolean "second_floor"
-    t.boolean "pets_allowed"
+    t.string "pets_allowed"
     t.string "availability"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

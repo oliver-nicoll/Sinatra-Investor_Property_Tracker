@@ -53,7 +53,7 @@ class RentalController < ApplicationController
     put '/rentals/:id' do
         redirect_if_not_logged_in
         redirect_if_not_authorized
-        
+    
         if @rental.update(params["rental"])
             redirect to "/rentals/#{@rental.id}"
         else

@@ -23,12 +23,16 @@
 
       <label for="monthly_rent">Monthly Rent: </label>
       <input type="text" name="rental[monthly_rent]" value="<%= @rental.monthly_rent %>" /><br><br>
-
+      
       <label for="second_floor">Second Floor? </label>
-      <input type="text" name="rental[second_floor]" value="<%= @rental.second_floor %>" /><br><br>
-
+      <input type="radio" id="true" name="rental[second_floor]" value="true" <%= 'checked' if @rental.second_floor %>  >
+      <label for="true">True</label>
+      <input type="radio" id="false" name="rental[second_floor]" value="false" <%= 'checked' if !@rental.second_floor %> >
+      <label for="false">False</label><br><br>
+    
       <label for="pets_allowed">Pets Allowed? </label>
       <input type="text" name="rental[pets_allowed]" value="<%= @rental.pets_allowed %>" /><br><br>
+      
 
       <label for="availability">Availability: </label>
       <input type="text" name="rental[availability]" value="<%= @rental.availability %>" /><br><br>
