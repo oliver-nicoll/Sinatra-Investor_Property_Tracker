@@ -13,22 +13,7 @@ class RentalController < ApplicationController
         erb :'rental/new'
     end
 
-    get '/rentals/:id' do
-        redirect_if_not_logged_in
-        redirect_if_not_authorized
-    
-        erb :'rental/show'
-    end
-
-      #update 1 rental (render form)
-    get '/rentals/:id/edit' do
-        redirect_if_not_logged_in
-        redirect_if_not_authorized
-
-        erb :'rental/edit'
-    end
-
-    #create new rental
+   
     post '/rentals' do
         redirect_if_not_logged_in
 
@@ -42,14 +27,22 @@ class RentalController < ApplicationController
         end
     end
 
-     #update 1 rental (render form)
-     get '/rentals/:id/edit' do
+    get '/rentals/:id' do
+        redirect_if_not_logged_in
+        redirect_if_not_authorized
+    
+        erb :'rental/show'
+    end
+
+    
+    get '/rentals/:id/edit' do
         redirect_if_not_logged_in
         redirect_if_not_authorized
 
         erb :'rental/edit'
     end
-#update 1 rental (save in db)
+
+    
     put '/rentals/:id' do
         redirect_if_not_logged_in
         redirect_if_not_authorized

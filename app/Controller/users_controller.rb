@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     post '/signup' do
         redirect_if_logged_in
 
-
         user = User.new(params["user"])
 
         if user.save 
@@ -24,18 +23,16 @@ class UsersController < ApplicationController
 
     get '/profile' do
         redirect_if_not_logged_in
-        # binding.pry
         
         erb :'users/show'
     end
     
-#update 1 user - renders form
     get '/profile/edit' do
         redirect_if_not_logged_in
-        @user = current_user #don't need this
+        @user = current_user #don't need this 
         erb :'users/edit'
     end
-#save in db
+
     put '/profile' do
         redirect_if_not_logged_in
 
