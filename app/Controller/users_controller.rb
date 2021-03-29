@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     get '/profile' do
         redirect_if_not_logged_in
-        
+        @projected_rent = current_user.rentals.map {|r| r.monthly_rent * 12 }.inject(:+)
         erb :'users/show'
     end
     
@@ -43,6 +43,8 @@ class UsersController < ApplicationController
             redirect to "/profile/edit"
         end
     end
+
+
 
     delete '/profile' do
        redirect_if_not_logged_in
