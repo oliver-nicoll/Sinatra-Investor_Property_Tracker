@@ -20,7 +20,7 @@ In order to run this application, execute:
 
 Then click on the local host link or type in:
 
-    $ http://localhost:9292/
+    $ http://localhost:9393/
 
 ## Sample Demo Video
 
@@ -39,7 +39,7 @@ The repo is available as open source under the terms of the [MIT License](https:
 
 ## Code of Conduct
 
-Anyone who wishes to interact with Date_Night_Trivia project’s codebases, issue trackers, chat rooms,  mailing lists and any other is expected to follow the [code of conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
+Anyone who wishes to interact with Sinatra-Investor_Property_Tracker project’s codebases, issue trackers, chat rooms,  mailing lists and any other is expected to follow the [code of conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
 
 
