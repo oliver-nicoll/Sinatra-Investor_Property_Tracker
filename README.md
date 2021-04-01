@@ -24,7 +24,7 @@ Then click on the local host link or type in:
 
 ## Sample Demo Video
 
-To look at a sample demo video click [here](https://youtu.be/deMkVN4pEoU)
+To look at a sample demo video click [here](https://www.youtube.com/watch?v=FkUdx7uedaI)
 
 ## Contributing
 
